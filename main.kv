@@ -1,0 +1,225 @@
+
+ScreenManagement:
+    Home_Page:
+    Translate_Game:
+        id: translate_game
+    End_Translate_Game:
+    Clicker_Game:
+    FinalPage:
+
+<Home_Page>:
+    name:'home'
+    canvas.before:
+        Rectangle:
+            size:self.size
+            source: 'white.jpg'
+    Label: 
+        text: "Choose your game"
+        color: (120/255,255/255,47/255)
+        font_size: 50
+        pos_hint: {"x":0,"y":0.4}
+    Translate_Game_Button:
+        text: "Translate Game"
+        font_size: 40
+        on_release:app.root.current = 'Translate_Game'
+        size_hint:0.5,0.15
+        back_color:(120/255, 255/255, 47/255, 1)
+        border_radius: [100]
+        pos_hint: {"x":0.25,"y":0.5}
+    Clicker_Game_Button:
+        text: "Clicker Game"
+        font_size: 40
+        on_release:app.root.current = 'Clicker_Game'
+        size_hint:0.5,0.15
+        back_color:(120/255, 255/255, 47/255, 1)
+        border_radius: [100]
+        pos_hint: {"x":0.25,"y":0.2}
+
+
+<Translate_Game>:
+    name: 'Translate_Game'
+    canvas.before:
+        Rectangle:
+            size:self.size
+            source: 'white.jpg'
+    
+
+    Label: 
+        id: number_turn_label
+        text: "Combien de mots souhaitez vous ? "
+        color: (120/255,255/255,47/255)
+        font_size: 40
+        pos_hint: {"x":0,"y":0.4}
+    TextInput:
+        id: number_turn_input
+        multiline:False
+        font_size:40
+        halign: 'center'
+        valign: 'middle'
+        size_hint: 0.5,0.1
+        pos_hint: {"x":0.25,"y":0.65}
+
+    TextInput:
+        id: answer
+        size_hint:0.5,0.15
+        text_validate_unfocus: True
+        pos_hint: {"x":0.25,"y":2}
+        multiline:False
+        font_size:40
+        halign: 'center'
+        valign: 'middle'
+        on_text_validate: root.check(answer.text)
+        focus: True
+        
+    Translate_Button:
+        id: start
+        text: 'Start'
+        on_press: root.number_turn()
+        background_color: (120/255,255/255,47/255, 1)
+        size_hint:0.5,0.15
+        font_size: 40
+        pos_hint: {"x":0.25,"y":0.35}
+        back_color:(120/255, 255/255, 47/255, 1)
+        
+    StartButton:
+        id: checkbutton
+        text: "Next"
+        on_press: root.check(answer.text)
+        background_color: (120/255,255/255,47/255, 1)
+        size_hint:0.5,0.15
+        font_size: 40
+        pos_hint: {"x":0.25,"y":2}
+        back_color:(120/255, 255/255, 47/255, 1)
+    restart_Button:
+        id: restartbutton
+        text: "Replay"
+        on_press: root.restart()
+        background_color: (120/255,255/255,47/255, 1)
+        size_hint:0.5,0.15
+        font_size: 40
+        pos_hint: {"x":0.25,"y":2}
+        back_color:(120/255, 255/255, 47/255, 1)
+    returnButton:
+        id:returnbutton
+        on_release:app.root.current = 'home'
+        text: "Menu"
+        background_color: (120/255,255/255,47/255, 1)
+        size_hint:0.5,0.15
+        font_size: 40
+        pos_hint: {"x":0.25,"y":2}
+        back_color:(120/255, 255/255, 47/255, 1)
+
+<restart_Button@Button>:
+    background_color:(0,0,0,0)
+    background_normal: ''
+    back_color: (1,0,1,1)
+    border_radius: [30]
+    canvas.before:
+        Color:
+            rgba: self.back_color
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: self.border_radius
+
+<returnButton@Button>:
+    id: returnbutton
+    background_color:(0,0,0,0)
+    background_normal: ''
+    back_color: (1,0,1,1)
+    border_radius: [30]
+
+    canvas.before:
+        Color:
+            rgba: self.back_color
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: self.border_radius
+
+<Translate_Button@Button>:
+    background_color:(0,0,0,0)
+    background_normal: ''
+    back_color: (1,0,1,1)
+    border_radius: [30]
+
+    canvas.before:
+        Color:
+            rgba: self.back_color
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: self.border_radius
+
+<StartButton@Button>:
+
+    background_color:(0,0,0,0)
+    background_normal: ''
+    back_color: (1,0,1,1)
+    border_radius: [30]
+
+    canvas.before:
+        Color:
+            rgba: self.back_color
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: self.border_radius
+    
+<Translate_Game_Button@Button>:
+    background_color:(0,0,0,0)
+    background_normal: ''
+    back_color: (1,0,1,1)
+    border_radius: [30]
+
+    canvas.before:
+        Color:
+            rgba: self.back_color
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: self.border_radius
+
+<Clicker_Game_Button@Button>:
+    background_color:(0,0,0,0)
+    background_normal: ''
+    back_color: (1,0,1,1)
+    border_radius: [30]
+
+    canvas.before:
+        Color:
+            rgba: self.back_color
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: self.border_radius
+
+<Comming_Soon_Button@Button>:
+    background_color:(0,0,0,0)
+    background_normal: ''
+    back_color: (1,0,1,1)
+    border_radius: [30]
+
+    canvas.before:
+        Color:
+            rgba: self.back_color
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: self.border_radius
+            
+<Clicker_Game>
+    name:'Clicker_Game'
+    canvas.before:
+        Rectangle:
+            size:self.size
+            source: 'home.png'
+    Label: 
+        text: "Comming Soon"
+        color: (173/255,255/255,47/255)
+        font_size: 60
+        pos_hint: {"x":0,"y":0}
+        
+
+
+
